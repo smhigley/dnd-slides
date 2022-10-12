@@ -1,0 +1,132 @@
+/* Calendar wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 25em;
+}
+
+/* Calendar header */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+
+.month-nav {
+  padding: 0.5em;
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+}
+
+.month-nav:focus {
+  outline: 2px solid #000;
+}
+
+.month-nav svg {
+  display: block;
+  width: 1.5em;
+}
+
+.month-title {
+  font-size: 1.25em;
+}
+
+/* Calendar grid */
+.grid {
+  border: 1px solid #e3e3e3;
+  border-collapse: collapse;
+}
+
+.grid-caption {
+  background-color: #fff;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 0.5em;
+}
+
+.grid-header {
+  position: relative;
+  border-bottom: 1px solid #e3e3e3;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.column-header {
+  padding: 0.5em 0;
+}
+
+.row {
+  background-color: #fff;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.grid-header .row {
+  border-bottom: none;
+}
+
+.selection-indicator {
+  display: block;
+  height: 1.6em;
+  position: relative;
+  width: 1.6em;
+}
+
+.cell {
+  align-items: center;
+  border-left: 1px solid #e3e3e3;
+  padding: 0;
+  outline: 0;
+}
+
+.cell:focus .date-button {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.cell:first-child,
+.col:first-child {
+  border-left: 0;
+}
+
+.cell.highlight {
+  background-color: #eeeeee;
+}
+
+.date-button {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0.75em;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  color: inherit;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.selected .date-button {
+  background-color: #4741c1;
+  color: #fff;
+  box-shadow: 0 0 18px 2px #4741c1;
+}
+
+.heading-cell {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
