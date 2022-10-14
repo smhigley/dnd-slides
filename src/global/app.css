@@ -8,6 +8,10 @@
   Any global CSS variables should also be applied here.
 */
 
+@import url('../../node_modules/reveal.js/dist/reveal.css');
+@import url('../../node_modules/reveal.js/dist/theme/black.css');
+@import url('../../node_modules/reveal.js/plugin/highlight/zenburn.css');
+
 body {
   margin: 0px;
   padding: 0px;

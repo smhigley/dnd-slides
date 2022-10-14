@@ -11,10 +11,30 @@ export namespace Components {
     interface AppRoot {
     }
     interface DndCalendar {
+        "columnheader": 'none' | 'ariaLabel' | 'abbr' | 'text';
+        "contrast": 'none' | 'arrows' | 'all';
+        "focusModel": 'cell' | 'button' | 'dual';
+        "selectedDay": Date;
         /**
           * Props and State
          */
         "startDate": Date;
+    }
+    interface DndDatepicker {
+        "columnheader": 'none' | 'ariaLabel' | 'abbr' | 'text';
+        "contrast": 'none' | 'arrows' | 'all';
+        "focusModel": 'cell' | 'button' | 'dual';
+        "showInput": boolean;
+        /**
+          * Props and State
+         */
+        "startDate": Date;
+    }
+    interface DndMiniGrid {
+        /**
+          * Props and State
+         */
+        "cellFocus": boolean;
     }
     interface DndSlides {
     }
@@ -38,6 +58,18 @@ declare global {
         prototype: HTMLDndCalendarElement;
         new (): HTMLDndCalendarElement;
     };
+    interface HTMLDndDatepickerElement extends Components.DndDatepicker, HTMLStencilElement {
+    }
+    var HTMLDndDatepickerElement: {
+        prototype: HTMLDndDatepickerElement;
+        new (): HTMLDndDatepickerElement;
+    };
+    interface HTMLDndMiniGridElement extends Components.DndMiniGrid, HTMLStencilElement {
+    }
+    var HTMLDndMiniGridElement: {
+        prototype: HTMLDndMiniGridElement;
+        new (): HTMLDndMiniGridElement;
+    };
     interface HTMLDndSlidesElement extends Components.DndSlides, HTMLStencilElement {
     }
     var HTMLDndSlidesElement: {
@@ -48,6 +80,8 @@ declare global {
         "app-demo": HTMLAppDemoElement;
         "app-root": HTMLAppRootElement;
         "dnd-calendar": HTMLDndCalendarElement;
+        "dnd-datepicker": HTMLDndDatepickerElement;
+        "dnd-mini-grid": HTMLDndMiniGridElement;
         "dnd-slides": HTMLDndSlidesElement;
     }
 }
@@ -57,11 +91,31 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface DndCalendar {
+        "columnheader"?: 'none' | 'ariaLabel' | 'abbr' | 'text';
+        "contrast"?: 'none' | 'arrows' | 'all';
+        "focusModel"?: 'cell' | 'button' | 'dual';
         "onDateSelected"?: (event: CustomEvent<Date>) => void;
+        "selectedDay"?: Date;
         /**
           * Props and State
          */
         "startDate"?: Date;
+    }
+    interface DndDatepicker {
+        "columnheader"?: 'none' | 'ariaLabel' | 'abbr' | 'text';
+        "contrast"?: 'none' | 'arrows' | 'all';
+        "focusModel"?: 'cell' | 'button' | 'dual';
+        "showInput"?: boolean;
+        /**
+          * Props and State
+         */
+        "startDate"?: Date;
+    }
+    interface DndMiniGrid {
+        /**
+          * Props and State
+         */
+        "cellFocus"?: boolean;
     }
     interface DndSlides {
     }
@@ -69,6 +123,8 @@ declare namespace LocalJSX {
         "app-demo": AppDemo;
         "app-root": AppRoot;
         "dnd-calendar": DndCalendar;
+        "dnd-datepicker": DndDatepicker;
+        "dnd-mini-grid": DndMiniGrid;
         "dnd-slides": DndSlides;
     }
 }
@@ -79,6 +135,8 @@ declare module "@stencil/core" {
             "app-demo": LocalJSX.AppDemo & JSXBase.HTMLAttributes<HTMLAppDemoElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "dnd-calendar": LocalJSX.DndCalendar & JSXBase.HTMLAttributes<HTMLDndCalendarElement>;
+            "dnd-datepicker": LocalJSX.DndDatepicker & JSXBase.HTMLAttributes<HTMLDndDatepickerElement>;
+            "dnd-mini-grid": LocalJSX.DndMiniGrid & JSXBase.HTMLAttributes<HTMLDndMiniGridElement>;
             "dnd-slides": LocalJSX.DndSlides & JSXBase.HTMLAttributes<HTMLDndSlidesElement>;
         }
     }

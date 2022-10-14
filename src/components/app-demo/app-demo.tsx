@@ -3,7 +3,7 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'app-demo',
   styleUrl: 'app-demo.css',
-  shadow: true,
+  shadow: false,
 })
 export class AppDemo {
 
@@ -11,7 +11,12 @@ export class AppDemo {
     return (
       <div class="app-demo">
         <p>Demo Page</p>
-        <dnd-calendar></dnd-calendar>
+        <dnd-calendar contrast='none' focusModel='button' />
+
+        <p> </p>
+
+        Datepicker:
+        <dnd-datepicker showInput={true} />
       </div>
     );
   }

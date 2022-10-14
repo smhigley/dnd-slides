@@ -6,46 +6,14 @@
   background-color: #fff;
 }
 
-/* Calendar header */
-.calendar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5em;
-}
-
-.month-nav {
-  padding: 0.5em;
-  background-color: transparent;
-  border: none;
-  border-radius: 3px;
-}
-
-.contrast-none .month-nav {
-  color: #d7d7d7;
-}
-
-.month-nav:focus {
-  outline: 2px solid #000;
-}
-
-.month-nav svg {
-  display: block;
-  width: 1.5em;
-  fill: currentColor;
-}
-
-.month-title {
-  font-size: 1.25em;
-}
-
-/* Calendar grid */
+/* grid */
 .grid {
   border: 1px solid #e3e3e3;
   border-collapse: collapse;
 }
 
 .grid-caption {
+  background-color: #fff;
   border-bottom: 1px solid #e3e3e3;
   padding: 0.5em;
 }
@@ -61,6 +29,7 @@
 }
 
 .row {
+  background-color: #fff;
   border-bottom: 1px solid #e3e3e3;
 }
 
@@ -90,43 +59,6 @@
 .cell:first-child,
 .col:first-child {
   border-left: 0;
-}
-
-.cell.highlight {
-  background-color: #eeeeee;
-}
-
-.cell.today {
-  position: relative;
-}
-
-.cell.today::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.contrast-all .cell.today::after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: calc(50% - 3px);
-  top: auto;
-  bottom: 12%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #4741c1;
-}
-
-.contrast-all .cell.selected.today::after {
-  background-color: #fff;
 }
 
 .date-button {

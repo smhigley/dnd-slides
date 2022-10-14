@@ -3,25 +3,19 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
-  shadow: true,
+  shadow: false,
 })
 export class AppRoot {
   render() {
     return (
-      <div>
-        <header>
-          <h1>Stencil App Starter</h1>
-        </header>
-
-        <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="dnd-slides" exact={true} />
-              <stencil-route url="/demo" component="app-demo" />
-            </stencil-route-switch>
-          </stencil-router>
-        </main>
-      </div>
+      <main>
+        <stencil-router>
+          <stencil-route-switch scrollTopOffset={0}>
+            <stencil-route url="/" component="dnd-slides" componentProps={{ className: 'slide-container' }} exact={true} />
+            <stencil-route url="/demo" component="app-demo" />
+          </stencil-route-switch>
+        </stencil-router>
+      </main>
     );
   }
 }

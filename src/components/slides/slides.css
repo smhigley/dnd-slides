@@ -1,3 +1,295 @@
-.slides {
-  padding: 10px;
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
 }
+
+.reveal h4 {
+	font-weight: bold;
+	text-transform: none;
+}
+
+.content-list li {
+	margin-bottom: 0.5em;
+}
+
+.flex-h {
+	display: flex;
+	align-items: center;
+}
+
+.left {
+	float: left;
+	width: 50%;
+	margin: 0;
+}
+
+.right {
+	float: right;
+	width: 50%;
+	margin: 0;
+}
+
+.text-emphasis {
+	font-size: 1.5em;
+	text-transform: uppercase;
+}
+
+.reveal .controls .navigate-right.highlight {
+	animation: none;
+}
+
+.reveal section img {
+	background: none;
+	box-shadow: none;
+	border: none;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.reveal .attribution {
+	font-size: 0.5em;
+}
+
+.reveal h1 {
+	font-size: 3em;
+}
+
+.reveal a,
+.reveal a:hover {
+	color: #108578;
+	text-decoration: underline;
+}
+
+.reveal .global-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 0.6em;
+	color: grey;
+	z-index: 2;
+}
+
+.global-footer a {
+	color: grey;
+}
+
+/* custom text */
+.large {
+	font-size: 1.25em;
+}
+
+.small {
+	font-size: 0.8em;
+}
+
+.reveal .footnote {
+	font-size: 0.5em;
+	opacity: 0.9;
+	margin: 0;
+}
+
+blockquote {
+	text-align: left;
+}
+
+/* Some format helpers */
+.collage {
+	display: flex;
+	align-items: center;
+}
+
+.collage > * {
+	flex: 1 1 auto;
+	margin: 0 -1em;
+}
+
+.collage > :nth-child(1) {
+	transform: rotate(-15deg);
+}
+
+.collage > :nth-child(2) {
+	transform: translate(0, 1em) rotate(10deg);
+}
+
+.collage > :nth-child(3) {
+	transform: translate(0, -1em) rotate(-15deg);
+}
+
+.collage > :nth-child(4) {
+	transform: rotate(15deg);
+}
+
+.collage > :nth-child(5) {
+	transform: rotate(-20deg);
+}
+
+.sequential-overlays {
+	list-style-type: none;
+	position: relative;
+}
+
+.sequential-overlays li {
+	display: block;
+	width: 100%;
+	background-color: #fff;
+}
+
+.sequential-overlays .step {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.steps2 {
+	position: relative;
+}
+
+.steps2 .step2:not(:first-child) {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.sequential-overlays img {
+	width: 100%;
+}
+
+.reveal .plain-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.reveal .inline-list {
+	list-style-type: none;
+	display: flex;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.inline-list li {
+	flex: 1 1 20%;
+	text-align: center;
+	padding: 0 0.5em;
+}
+
+.inline-list li.faded {
+	opacity: 0.1;
+}
+
+.inline-list img {
+	width: 100%;
+}
+
+/* Calendar-specific style overrides */
+.calendar {
+	display: flex;
+	justify-content: center;
+	font-size: 24px;
+	color: #000;
+}
+
+/* my weird styles */
+.dice-image {
+	position: absolute;
+	left: -10%;
+	top: -10%;
+	width: 150px;
+}
+
+.hands-image {
+	position: absolute;
+	left: -10%;
+	top: -10%;
+	width: 150px;
+}
+
+.reveal .stat-table {
+	margin-left: -2em;
+	font-size: 0.8em;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+legend {
+	display: block;
+	font-weight: bold;
+}
+
+.roll-choice {
+	display: flex;
+	align-items: center;
+	column-gap: 0.5em;
+	font-size: 0.8em;
+	margin-bottom: 0.5em;
+}
+
+.roll-choice input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255,255,255,0.75);
+  border: 4px solid #fff;
+	border-radius: 10%;
+  height: 3.5em;
+  width: 3.5em;
+  display: inline-block;
+  vertical-align: text-bottom;
+  position: relative;
+}
+
+
+
+.roll-choice input::before {
+	content: '';
+	position: absolute;
+	margin: auto;
+	height: 0;
+	width: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	top: 0;
+}
+  
+.roll-choice input:focus {
+	outline: 2px solid #000;
+	outline-offset: 1px;
+}
+
+.roll-choice input:checked::before {
+  border-right: 5px solid #000;
+  border-bottom: 5px solid #000;
+  height: 60%;
+  width: 25%;
+  transform: rotate(45deg) translateY(-10%) translateX(-15%);
+}
+
+.select-choice {
+	padding: 0.25em 1em;
+	border: 1px solid #666;
+	border-radius: 6px;
+	background-color: #fff;
+	font-size: 0.8em;
+	display: block;
+	margin: 0 auto;
+}
+

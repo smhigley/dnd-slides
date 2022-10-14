@@ -3,7 +3,8 @@ import { WEEKDAYS_ABBR, WEEKDAYS_FULL, MONTHS } from './strings';
 
 @Component({
   tag: 'dnd-calendar',
-  styleUrl: './calendar.css'
+  styleUrl: './calendar.css',
+  shadow: true
 })
 export class Calendar {
   /**
@@ -12,6 +13,13 @@ export class Calendar {
 
   // Date object to set the calendar's starting month and year
   @Prop() startDate: Date;
+
+  @Prop() selectedDay: Date;
+
+  // Props for talk-specific choices
+  @Prop() contrast: 'none' | 'arrows' | 'all' = 'none';
+  @Prop() columnheader: 'none' | 'ariaLabel' | 'abbr' | 'text' = 'none';
+  @Prop() focusModel: 'cell' | 'button' | 'dual' = 'cell';
 
   // activeDate refers to the date info for the current highlighted date within the current month
   @State() activeDate: number;
@@ -59,7 +67,23 @@ export class Calendar {
     this.dates = this.generateMonthDates();
   }
 
+  @Watch('selectedDay')
+  watchStartDate() {
+    if (!this.selectedDay) {
+      this.selectedDate = undefined;
+      return;
+    };
+
+    this.activeDate = this.selectedDay.getDate();
+    if (this.selectedDay.getMonth() !== this.month || this.selectedDay.getFullYear() !== this.year) {
+      this.month = this.selectedDay.getMonth();
+      this.year = this.selectedDay.getFullYear();
+      this.generateMonthDates();
+    }
+  }
+
   componentWillLoad() {
+    this.selectedDate = this.selectedDay ? this.selectedDay : undefined;
     const startDate = this.startDate ? new Date(this.startDate) : new Date();
     this.month = startDate.getMonth();
     this.year = startDate.getFullYear();
@@ -76,7 +100,7 @@ export class Calendar {
   }
 
   render() {
-    return <div class="wrapper">
+    return <div class={`wrapper contrast-${this.contrast}`}>
         <div class="calendar-header">
           <button class="month-nav" aria-label={`Previous month, ${MONTHS[this.month - 1]}`} onClick={() => { this.updateActiveMonth(this.month - 1) }}>
             <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M13.891 17.418c0.268 0.272 0.268 0.709 0 0.979s-0.701 0.271-0.969 0l-7.83-7.908c-0.268-0.27-0.268-0.707 0-0.979l7.83-7.908c0.268-0.27 0.701-0.27 0.969 0s0.268 0.709 0 0.979l-7.141 7.419 7.141 7.418z"></path></svg>
@@ -91,9 +115,11 @@ export class Calendar {
           <tr role="row" class="row">
             {WEEKDAYS_ABBR.map((day, i) => {
               return (
-                <th role="columnheader" class={{'column-header': true}}>
-                  <span class="visuallyHidden">{WEEKDAYS_FULL[i]}</span>
-                  <span aria-hidden="true">{day}</span>
+                <th role="columnheader" class={{'column-header': true}} aria-label={this.columnheader === 'ariaLabel' ? WEEKDAYS_FULL[i] : null} abbr={this.columnheader === 'abbr' ? WEEKDAYS_FULL[i] : null}>
+                  {this.columnheader === 'text' ?
+                    <span class="visuallyHidden">{WEEKDAYS_FULL[i]}</span>
+                  : null}
+                    <span aria-hidden={this.columnheader === 'text' ? 'true' : null}>{day}</span>
                 </th>
               )
             })}
@@ -196,6 +222,7 @@ export class Calendar {
       case 'Enter':
         this.selectDate(activeDate);
         event.preventDefault();
+        event.stopPropagation();
         break;
       case 'PageUp':
         activeMonth -= 1;
@@ -208,6 +235,7 @@ export class Calendar {
     if (this.updateActiveMonth(activeMonth) || this.updateActiveDate(activeDate)) {
       this.callFocus = true;
       event.preventDefault();
+      event.stopPropagation();
     }
   }
 
@@ -220,6 +248,7 @@ export class Calendar {
       isSelected = this.selectedDate && this.isSameDay(cellDate, this.selectedDate);
     }
     const isHighlighted = weekIndex === this.activeWeek || dayIndex === this.activeDayColumn;
+    const cellFocus = this.focusModel === 'cell' || this.focusModel === 'dual';
     const onDateClick = () => { this.onDateClick(date); };
     return <td
       role='gridcell'
@@ -227,8 +256,8 @@ export class Calendar {
       class={{'cell': true, 'today': isToday, 'selected': isSelected, 'highlight': isHighlighted }}
       aria-selected={`${isSelected}`}
       aria-current={isToday ? 'date' : null}
-      tabIndex={isActiveDate ? 0 : -1}
-      ref={isActiveDate ? (el) => {
+      tabIndex={cellFocus ? isActiveDate ? 0 : -1 : null}
+      ref={cellFocus && isActiveDate ? (el) => {
         this.focusRef = el;
       } : null}
       onClick={onDateClick}
@@ -238,7 +267,16 @@ export class Calendar {
       onMouseLeave={() => this.onDateHighlightOff()}
     >
       { date ? 
-        <button class="date-button" onClick={onDateClick} tabIndex={-1}>{date}</button>
+        this.focusModel !== 'cell' ?
+          <button
+            class="date-button"
+            onClick={onDateClick}
+            tabIndex={!cellFocus && isActiveDate ? 0 : -1}
+            ref={!cellFocus && isActiveDate ? (el) => {
+              this.focusRef = el;
+            } : null}
+          >{date}</button>
+          : <span class="date-button">{date}</span>
         : <span></span>
       }
     </td>;
