@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { WEEKDAYS_ABBR, WEEKDAYS_FULL, MONTHS } from './strings';
 
 @Component({
@@ -39,6 +39,15 @@ export class Calendar {
 
   // grid of dates for the current month
   @State() dates: (number | undefined)[][];
+
+  // public focus method
+  @Method()
+  async focusDate() {
+    console.log('focus date', this.focusRef);
+    if (this.focusRef) {
+      this.focusRef.focus();
+    }
+  }
 
   /*
    * Private internal properties

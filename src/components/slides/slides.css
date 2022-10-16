@@ -10,6 +10,15 @@
 	white-space: nowrap;
 }
 
+.reveal {
+	background-image: url(../assets/cave-bg.png);
+	background-size: cover;
+}
+
+.slide-gradient {
+	background: radial-gradient(#000 0, #000 10%, transparent 100%);
+}
+
 .reveal h4 {
 	font-weight: bold;
 	text-transform: none;
@@ -17,6 +26,18 @@
 
 .content-list li {
 	margin-bottom: 0.5em;
+}
+
+.reveal .results-table {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin: 0;
+	row-gap: 0.75em;
+}
+
+.reveal .results-table dd,
+.reveal .results-table dt {
+	margin: 0;
 }
 
 .flex-h {
@@ -122,7 +143,7 @@ blockquote {
 }
 
 .collage > :nth-child(3) {
-	transform: translate(0, -1em) rotate(-15deg);
+	transform: translate(0, -1em) rotate(15deg);
 }
 
 .collage > :nth-child(4) {
@@ -136,12 +157,13 @@ blockquote {
 .sequential-overlays {
 	list-style-type: none;
 	position: relative;
+	padding: 0;
+	margin: 0;
 }
 
 .sequential-overlays li {
 	display: block;
 	width: 100%;
-	background-color: #fff;
 }
 
 .sequential-overlays .step {
@@ -160,10 +182,6 @@ blockquote {
 	width: 100%;
 	left: 0;
 	top: 0;
-}
-
-.sequential-overlays img {
-	width: 100%;
 }
 
 .reveal .plain-list {
@@ -192,6 +210,43 @@ blockquote {
 
 .inline-list img {
 	width: 100%;
+}
+
+.fade-series {
+	position: relative;
+}
+
+.fade-series img:first-child {
+	position: relative;
+	width: 40%;
+	margin-right: 60%;
+	z-index: 2;
+}
+
+.fade-series img:not(:first-child) {
+	position: absolute;
+	width: 40%;
+	top: 0;
+}
+
+.fade-series img:nth-child(2) {
+	left: 20%;
+	opacity: 70%;
+}
+
+.fade-series img:nth-child(3) {
+	left: 40%;
+	opacity: 50%;
+}
+
+.fade-series img:nth-child(4) {
+	left: 60%;
+	opacity: 30%;
+}
+
+.fade-series img:nth-child(5) {
+	left: 80%;
+	opacity: 10%;
 }
 
 /* Calendar-specific style overrides */
@@ -288,7 +343,7 @@ legend {
 	border: 1px solid #666;
 	border-radius: 6px;
 	background-color: #fff;
-	font-size: 0.8em;
+	font-size: 1.5em;
 	display: block;
 	margin: 0 auto;
 }

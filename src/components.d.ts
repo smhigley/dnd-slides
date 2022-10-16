@@ -13,6 +13,7 @@ export namespace Components {
     interface DndCalendar {
         "columnheader": 'none' | 'ariaLabel' | 'abbr' | 'text';
         "contrast": 'none' | 'arrows' | 'all';
+        "focusDate": () => Promise<void>;
         "focusModel": 'cell' | 'button' | 'dual';
         "selectedDay": Date;
         /**

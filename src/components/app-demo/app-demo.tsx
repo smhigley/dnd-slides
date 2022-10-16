@@ -11,7 +11,7 @@ export class AppDemo {
     return (
       <div class="app-demo">
         <p>Demo Page</p>
-        <dnd-calendar contrast='none' focusModel='button' />
+        <dnd-calendar contrast='all' focusModel='dual' />
 
         <p> </p>
 
