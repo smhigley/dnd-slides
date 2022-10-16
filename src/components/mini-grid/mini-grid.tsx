@@ -45,7 +45,7 @@ export class MiniGrid {
         <table role="grid" class="grid" aria-label="Grid interaction example" onKeyDown={this.onKeydown.bind(this)}>
         <thead role="rowgroup" class="grid-header">
           <tr role="row" class="row">
-            {COLUMN_NAMES.map((col, i) => {
+            {COLUMN_NAMES.map((col) => {
               return (
                 <th role="columnheader" class="column-header">
                   <span>{col}</span>
