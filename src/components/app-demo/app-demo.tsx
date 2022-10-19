@@ -10,13 +10,12 @@ export class AppDemo {
   render() {
     return (
       <div class="app-demo">
-        <p>Demo Page</p>
         <dnd-calendar contrast='all' focusModel='dual' />
 
         <p> </p>
 
-        Datepicker:
-        <dnd-datepicker showInput={true} />
+        {/* Datepicker:
+        <dnd-datepicker showInput={true} /> */}
       </div>
     );
   }

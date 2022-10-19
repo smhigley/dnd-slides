@@ -168,8 +168,11 @@ export class Slides {
           </section>
 
           <section class="slide-gradient">
-            {this.contrast !== 'none' ?
+            {this.contrast === 'arrows' ?
               <p>We survived our first battle! On to the next...</p>
+            : null}
+            {this.contrast === 'all' ?
+              <p>We emerge victorious from our first battle! On to the next...</p>
             : null}
             {this.contrast === 'none' ?
               <p>It's a minor setback, but there are more battles to come!</p>
@@ -218,6 +221,7 @@ export class Slides {
           <section data-background-image="./assets/hands.png" data-background-size="150px" data-background-position="10% 10%">
             <label htmlFor="columnheader">Column header labels:</label>
             <select class="select-choice" onChange={(ev) => this.columnheader = (ev.target as HTMLSelectElement).value as any}>
+              <option value="none">none</option>
               <option value="ariaLabel">aria-label</option>
               <option value="abbr">abbr</option>
               <option value="text">hidden text</option>
@@ -368,6 +372,11 @@ export class Slides {
           <section class="slide-gradient">
             <h3 style={{ textTransform: 'none' }}>The battle is over, but the adventure continues</h3>
             <img src="./assets/tavern.png" alt="all three party members relax around a tavern table, the wizard and druid playing cards, and the bard strumming their lute" />
+          </section>
+
+          <section class="slide-gradient">
+            <p class="large">smhigley.github.io/dnd-slides</p>
+            <p class="large">@codingchaos</p>
           </section>
         </div>
       </div>
