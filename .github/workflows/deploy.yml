@@ -18,7 +18,7 @@ jobs:
           cache: npm
 
       # build slides app
-      - name: build
+      - name: Build
         run: |
           npm ci
           npm run build --prerender
