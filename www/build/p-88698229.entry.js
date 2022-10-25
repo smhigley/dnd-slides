@@ -1,1 +1,0 @@
-import{r as a,h as d}from"./p-ce29c58b.js";let p=class{constructor(d){a(this,d)}render(){return d("div",{class:"app-demo"},d("dnd-calendar",{contrast:"all",focusModel:"dual"}),d("p",null," "))}};p.style=".app-demo{padding:60px}";export{p as app_demo}
